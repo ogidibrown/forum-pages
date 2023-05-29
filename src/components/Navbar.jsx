@@ -1,6 +1,6 @@
-import { AiOutlineSmallDash } from 'react-icons/ai';
+import { AiFillCaretDown, AiOutlineSmallDash } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState,useEffect,useRef } from 'react';
 
 const Navbar = () => {
 
@@ -26,11 +26,40 @@ let MoreLinks = [
   {name:"Reviews given", link:"/reviews"},
 ];
 
+
 const [isOpen, setIsOpen] = useState(false);
+const dropdownRef = useRef(null);
+const downRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+ 
+  const [Open, setOpen] = useState(false);
+
+  const dotDropdown = () => {
+    setOpen(!Open);
+  };
+
+  useEffect(() => {
+    // Event listener to handle clicks outside the dropdown
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }else if(downRef.current && !downRef.current.contains(event.target)){
+        setOpen(false);
+      }
+    };
+
+    // Attach the event listener on component mount
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
 
 
   return (
@@ -43,13 +72,13 @@ const [isOpen, setIsOpen] = useState(false);
                 <Link to={link.link}>{link.name}</Link>
               </li>
             ))}
-            <li>
-              <Link onClick={toggleDropdown}>More</Link>
+            <li ref={dropdownRef}>
+              <Link  className='flex items-center gap-[4px]' onClick={toggleDropdown}>More <AiFillCaretDown /></Link>
               {isOpen && (
 
-                  <ul className='w-[340px] p-5 mt-2 rounded-[10px] absolute bg-[#4e4b4b] shadow-gray-500'>
+                  <ul  onClick={()=>setIsOpen(false)} className='w-[340px] p-5 mt-2 rounded-[10px] absolute bg-[#3c3a3a] shadow-gray-500'>
                   {MoreLinks.map((link)=>(
-                  <li className='hover:text-gray-500 block text-white gap-4'>
+                  <li  className='hover:text-gray-500 block text-white gap-4'>
                     <Link to={link.link}>{link.name}</Link>
                   </li>
                 ))}
@@ -59,8 +88,20 @@ const [isOpen, setIsOpen] = useState(false);
           </ul>  
         </div>
       
-         <div  className='w-[40px] h-[40px]  bg-[#323232de] flex items-center justify-center rounded-[5px] cursor-pointer'>
-             <AiOutlineSmallDash className='w-[30px] h-[30px] text-[#fff]'/>
+         <div ref={downRef} className='w-[40px] h-[40px]  bg-[#323232de] flex items-center justify-center rounded-[5px] cursor-pointer'>
+  
+             
+              <Link className='flex items-center gap-[4px]' onClick={dotDropdown}><AiOutlineSmallDash className='w-[30px] h-[30px] text-[#fff]'/></Link>
+              {Open && (
+
+                  <ul   className='w-[340px] p-5 -mb-[11.8rem] rounded-[10px] absolute bg-[#3c3a3a] shadow-gray-500 gap-2  ' >
+                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link>Find support or report"</Link></li>
+                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link>Block</Link></li>
+                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link>Invite friends</Link></li>
+                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link>Like</Link></li>
+                  </ul>
+              )}
+            
          </div>
     </nav>
     </div>

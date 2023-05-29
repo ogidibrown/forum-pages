@@ -2,6 +2,8 @@ import Navbar from "../components/Navbar";
 import HeroImg from '../assets/forum.jpg';
 import HeroProf from '../assets/profile.jpg';
 import { FaSearch, } from 'react-icons/fa';
+import { BsMessenger } from 'react-icons/bs';
+import { RiUserFollowFill} from 'react-icons/ri';
 
 
 
@@ -24,8 +26,8 @@ const Hero = () => {
                   <p className="text-white pl-[80px]">2.7K likes • 2.7K followers</p>
                 </div>
                 <div className="flex gap-2 items-center  pt-8 cursor-pointer">
-                  <div className="bg-[#323232de] w-[95px] h-[33px] text-white flex rounded-[5px] items-center justify-center ">Following</div>
-                <div className="bg-blue-500 w-[95px] h-[33px] text-white flex rounded-[5px] items-center justify-center ">Message</div>
+                  <div className="bg-[#323232de] w-[95px] h-[33px] text-white flex rounded-[5px] items-center justify-center gap-1 "><RiUserFollowFill/> Following</div>
+                <div className="bg-blue-500 w-[95px] h-[33px] text-white flex rounded-[5px] items-center justify-center gap-1"><BsMessenger/> Message</div>
                   <div className=" flex items-center justify-center text-white bg-[#323232de] h-[33px] w-[85px] rounded-[5px] gap-1"><FaSearch /> Search</div>
                 </div>
             </div>
