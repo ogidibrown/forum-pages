@@ -1,4 +1,6 @@
-import { AiFillCaretDown, AiOutlineSmallDash } from 'react-icons/ai';
+import { AiFillCaretDown, AiOutlineSmallDash,AiOutlineLike } from 'react-icons/ai';
+import {BsExclamationSquare,BsPlusSquare} from 'react-icons/bs';
+import {LuUserCog} from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import { useState,useEffect,useRef } from 'react';
 
@@ -76,7 +78,7 @@ const downRef = useRef(null);
               <Link  className='flex items-center gap-[4px]' onClick={toggleDropdown}>More <AiFillCaretDown /></Link>
               {isOpen && (
 
-                  <ul  onClick={()=>setIsOpen(false)} className='w-[340px] p-5 mt-2 rounded-[10px] absolute bg-[#3c3a3a] shadow-gray-500'>
+                  <ul  onClick={()=>setIsOpen(false)} className='w-[340px] p-5 mt-[0.9rem] rounded-[10px] absolute bg-[#3c3a3a] shadow-gray-500'>
                   {MoreLinks.map((link)=>(
                   <li  className='hover:text-gray-500 block text-white gap-4'>
                     <Link to={link.link}>{link.name}</Link>
@@ -94,11 +96,11 @@ const downRef = useRef(null);
               <Link className='flex items-center gap-[4px]' onClick={dotDropdown}><AiOutlineSmallDash className='w-[30px] h-[30px] text-[#fff]'/></Link>
               {Open && (
 
-                  <ul   className='w-[340px] p-5 -mb-[11.8rem] rounded-[10px] absolute bg-[#3c3a3a] shadow-gray-500 gap-2  ' >
-                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link>Find support or report"</Link></li>
-                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link>Block</Link></li>
-                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link>Invite friends</Link></li>
-                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link>Like</Link></li>
+                  <ul   className='w-[340px] p-5 -mb-[11.8rem] rounded-[10px] absolute bg-[#3c3a3a] shadow-gray-500 gap-2 ' >
+                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500 flex '><Link className='flex items-center gap-3'><BsExclamationSquare/> Find support or report</Link></li>
+                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link className='flex items-center gap-3'><LuUserCog/> Block</Link></li>
+                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link className='flex items-center gap-3'><BsPlusSquare/> Invite friends</Link></li>
+                    <li onClick={()=>setOpen(false)} className='hover:text-gray-500'><Link className='flex items-center gap-3'><AiOutlineLike/> Like</Link></li>
                   </ul>
               )}
             
