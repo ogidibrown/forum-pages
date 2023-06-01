@@ -66,7 +66,7 @@ const downRef = useRef(null);
 
   return (
     <div className='flex justify-center   bg-[#4e4b4b]'>
-    <nav className="fixed bottom-[138px] flex h-[50px] w-[950px] shadow-gray-500 justify-between p-[10px] items-center text-white border-t-[1px] outline-none ">
+    <div className=" flex h-[50px] w-[950px] shadow-gray-500 justify-between p-[10px] items-center text-white border-t-[1px] outline-none ">
         <div className='flex justify-between'>
           <ul className='flex gap-5 items-center h-full'>
             {Links.map((link)=>(
@@ -105,7 +105,7 @@ const downRef = useRef(null);
               )}
             
          </div>
-    </nav>
+    </div>
     </div>
   )
 }

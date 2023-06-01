@@ -10,7 +10,7 @@ import { RiUserFollowFill} from 'react-icons/ri';
 const Hero = () => {
   return (
     <div className=" bg-[#4e4b4b] w-full h-[580px]">
-        <Navbar />
+
         <div className="flex flex-col justify-center ">
             <div className="  bg-from-[#4e4b4b] flex h-[515px] w-full justify-center items-start md:justify-center md:items-center  ">
               <img src={HeroImg} alt="Heroimage" srcset=""  className="h-[418px] w-[1000px] rounded-[5px]"/>
@@ -33,7 +33,8 @@ const Hero = () => {
             </div>
             </div>
         </div>
-        <div className="flex  justify-center mt-3 ">
+        <div className="mt-[12px]">
+        <Navbar />
         </div>
     </div>
   )
